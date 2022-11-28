@@ -1,0 +1,24 @@
+.example-container {
+  position: absolute;
+  top: 80px;
+  bottom: -5%;
+  left: 0;
+  right: 0;
+  background-color: white;
+}
+
+.mat-sidenav {
+  background: #0575E6;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #021B79, #0575E6);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #021B79, #0575E6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+.mat-list-item {
+  color: white;
+
+}

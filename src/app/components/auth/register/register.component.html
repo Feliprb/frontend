@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Create an account</h2>
+
+    <form #frmRegister="ngForm" class="login-container" (ngSubmit)="onRegister(frmRegister)">
+      <p>
+        <input type="text" name="name" placeholder="name" ngModel required #nomValid="ngModel">
+        <mat-error *ngIf="nomValid.invalid ">Este campo es requerido</mat-error>
+        
+      </p>
+      <p>
+        <input type="text" name="rol" ngModel="INVITADO" readonly>
+      </p>
+      <p>
+        <input type="email" name="email" placeholder="Email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  required #emailValid="ngModel">
+        <mat-error *ngIf="emailValid.invalid ">Este campo es requerido</mat-error>
+
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="Password" ngModel minlength="10" required #passValid="ngModel">
+        <mat-error *ngIf="passValid.invalid "> Un mínimo de 10 dígitos</mat-error>
+
+      </p>
+      <p>
+        <input type="submit" value="Register" >
+      </p>
+    </form>
+  </div>
+</div>

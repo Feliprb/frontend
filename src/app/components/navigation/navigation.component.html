@@ -1,0 +1,32 @@
+<mat-sidenav-container class="example-container" *ngIf="shouldRun">
+  <mat-sidenav mode="side" [opened]="true">
+    <mat-nav-list><br>
+      <a mat-list-item routerLink="/libros">
+        <mat-icon>book</mat-icon>Libros
+      </a><br>
+      <a mat-list-item routerLink="/prestamos">
+        <mat-icon> list_alt</mat-icon>Prestamos
+      </a><br>
+      <a mat-list-item routerLink="/estudiantes">
+        <mat-icon>people</mat-icon>Estudiantes
+      </a><br>
+      <a mat-list-item routerLink="/autores">
+        <mat-icon>people</mat-icon>Autores
+      </a><br>
+      <a mat-list-item routerLink="/editoriales">
+        <mat-icon>business</mat-icon>Editoriales
+      </a><br><br><br>
+      <a mat-list-item routerLink="/usuarios">
+        <mat-icon>people</mat-icon>Usuarios
+      </a><br><br>
+
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>

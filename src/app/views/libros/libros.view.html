@@ -1,0 +1,90 @@
+<div class="row">
+
+  <!-- FORM -->
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body p-4">
+
+        <!-- Form -->
+        <form #libroForm="ngForm" (ngSubmit)="addLibro(libroForm)">
+          <!--  Id libro -->
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="libroService.selectedLibro._id">
+
+          <div class="form-group">
+            <label>Nombre :</label>
+            <input type="text" name="nombre" #name="ngModel" [(ngModel)]="libroService.selectedLibro.nombre" 
+              placeholder="Ingrese el nombre" class="form-control" required #nomValid="ngModel">
+              <mat-error *ngIf="nomValid.invalid">Este campo es requerido</mat-error>
+          </div>
+
+          <div class="form-group">
+            <label>Autor :</label>
+            <select name="autor" #name="ngModel" [(ngModel)]="libroService.selectedLibro.autor" class="form-control" required #autValid="ngModel">
+              <option value="" selected>Elija el autor</option>
+              <option *ngFor="let autor of listAutores" [value]="autor.nombre">
+                {{ autor.nombre }}
+              </option>
+            </select>
+            <mat-error *ngIf="autValid.invalid">Este campo es requerido</mat-error>
+          </div>
+
+          <div class="form-group">
+            <div class="input-field col-s12">
+              <label>Editorial :</label>
+              <select name="editorial" #name="ngModel" [(ngModel)]="libroService.selectedLibro.editorial"
+                class="form-control" required #editValid="ngModel">
+                <option value="" selected>Elija el libro</option>
+                <option *ngFor="let editorial of listEditoriales" [value]="editorial.nombre">
+                  {{ editorial.nombre }}
+                </option>
+              </select>
+              <mat-error *ngIf="editValid.invalid">Este campo es requerido</mat-error>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-field col-s12">
+              <label>Descripcion :</label>
+              <input type="text" name="descripcion" #name="ngModel" [(ngModel)]="libroService.selectedLibro.descripcion"
+                placeholder="Ingrese una descripcion" class="form-control" required #desValid="ngModel">
+              <mat-error *ngIf="desValid.invalid">Este campo es requerido</mat-error>
+            </div>
+          </div>
+
+          <button class="btn btn-primary mr-2" (click)="resetForm(libroForm)">Limpiar</button>
+          <button class="btn btn-secondary" [disabled]="!libroForm.valid">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="col-md-7">
+    <table class="table table-striped">
+      <thead>
+        <th>Nombre</th>
+        <th>Autor</th>
+        <th>Editorial</th>
+        <th>Descripcion</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of libroService.libros">
+          <td>{{ libro.nombre }}</td>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.editorial }}</td>
+          <td class="box">{{ libro.descripcion }}</td>
+
+          <td>
+            <a (click)="editLibro(libro)" class="btn btn-secondary btn-sm">
+              <i class="material-icons">edit</i>
+            </a>
+            <a (click)="deleteLibro(libro._id, libroForm)" class="btn btn-danger btn-sm">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

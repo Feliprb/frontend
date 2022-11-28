@@ -1,0 +1,23 @@
+:host{
+    display: block;
+    margin-left: 3%;
+    margin-top: 30px;
+    
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+    th,td {
+        width: 130px;
+        height: 50px;
+        text-align: left;
+        //vertical-align: top;
+        padding: 1em;
+        word-wrap: break-word;
+    }
+    .box {
+        border: 1px solid #333333;
+        overflow: scroll;
+        word-wrap: normal;
+    }
+}
